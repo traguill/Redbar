@@ -15,8 +15,13 @@ public static class GameEnums
 
     public enum PieceShape
     {
-        SQUARE,
-        TRIANGLE
+        PIECE_I,
+        PIECE_O,
+        PIECE_T,
+        PIECE_S,
+        PIECE_Z,
+        PIECE_J,
+        PIECE_L
     }
 
     public enum PieceColor
