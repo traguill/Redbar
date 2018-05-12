@@ -23,18 +23,20 @@ public class Background : MonoBehaviour {
 
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
-        if(IsOutOfCamera(ref planes, floor) && IsOutOfCamera(ref planes, wall))
+        Vector3 rightPosition = new Vector3(go_wall.transform.position.x + go_wall.mesh.bounds.size.x / 2, go_wall.transform.position.y, go_wall.transform.position.z);
+        if(Camera.main.WorldToViewportPoint(rightPosition).x < 0)
         {
-
-        }
-        
+            this.transform.position = new Vector3(transform.position.x + (go_wall.mesh.bounds.size.x * 5), transform.position.y, transform.position.z);
+        }        
        
 
 	}
 
+
+    //Unused function
     bool IsOutOfCamera(ref Plane[] planes, Mesh s)
     {
-        return GeometryUtility.TestPlanesAABB(planes, s.bounds);
+        return !GeometryUtility.TestPlanesAABB(planes, s.bounds);
     }
 
 }
