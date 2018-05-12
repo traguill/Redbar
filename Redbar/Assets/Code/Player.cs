@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
         
         if(Input.GetButton("AButton"))
         {
-            GamePadController.instance.Vibrate(1);
+            StartCoroutine(GamePadController.instance.Vibrate());
             //Enter portal
         }
 
