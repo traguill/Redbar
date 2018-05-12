@@ -60,6 +60,23 @@ public class GridManager : MonoBehaviour
 		
 	}
 
+    private bool CheckResolveGame()
+    {
+        for(int x = 0; x < gridSize; x++)
+        {
+            for(int y = 0; y < gridSize; ++y)
+            {
+                if(grid[x,y] != 0)
+                {
+                    if (gridState[x, y] == 0)
+                        return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     private void InitializeGrid()
     {
         grid = new int[gridSize, gridSize];
