@@ -228,12 +228,20 @@ MonoBehaviour:
   gridSize: 8
   cellSize: 3
   lvlShape:
-  - {x: 5, y: 3}
+  - {x: 0, y: 2}
   - {x: 1, y: 2}
   - {x: 1, y: 2}
-  - {x: 2, y: 6}
+  - {x: 2, y: 5.73}
   - {x: 1, y: 2}
-  showLevel: 1
+  lvlPieces:
+  - x: 2
+    y: 2
+    type: 2
+  - x: 1
+    y: 2
+    type: 5
+  showFinalShape: 1
+  showPiecesLoc: 1
 --- !u!4 &1987114664
 Transform:
   m_ObjectHideFlags: 0
