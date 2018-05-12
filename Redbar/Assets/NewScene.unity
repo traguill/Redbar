@@ -170,6 +170,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 564240222}
+  - component: {fileID: 564240223}
   m_Layer: 0
   m_Name: CamGroup
   m_TagString: Untagged
@@ -192,6 +193,19 @@ Transform:
   m_Father: {fileID: 1861222956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564240223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 564240221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96afaf2981220c429344030e586a345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDist: 3
+  speed: 1
 --- !u!1001 &597175615
 Prefab:
   m_ObjectHideFlags: 0
@@ -395,7 +409,6 @@ GameObject:
   - component: {fileID: 1497614901}
   - component: {fileID: 1497614900}
   - component: {fileID: 1497614899}
-  - component: {fileID: 1497614898}
   - component: {fileID: 1497614903}
   m_Layer: 0
   m_Name: Main Camera
@@ -417,19 +430,6 @@ Transform:
   m_Father: {fileID: 564240222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1497614898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1497614896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a96afaf2981220c429344030e586a345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxDist: 3
-  speed: 1
 --- !u!81 &1497614899
 AudioListener:
   m_ObjectHideFlags: 0
