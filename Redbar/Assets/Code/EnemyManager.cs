@@ -73,6 +73,7 @@ public class Enemymanager : MonoBehaviour
     public void SpawnDrunk(bool interact)
     {
         numTotalEvents++;
+        
     }
 
     public void SpawnCar(bool interact)
@@ -83,6 +84,7 @@ public class Enemymanager : MonoBehaviour
     public void SpawnGroup(bool interact)
     {
         numTotalEvents++;
+        //Instantiate group
     }
 
     public void SpawnSilhouette(bool interact)
