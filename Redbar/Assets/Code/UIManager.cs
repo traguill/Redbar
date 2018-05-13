@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
 {
     public CanvasGroup uiElement;
 
+    public GameObject title;
+    public GameObject text;
+
     public string introText;
     public string winText;
     public string loseText;
@@ -47,6 +50,12 @@ public class UIManager : MonoBehaviour
 
     public void changeText(string newText)
     {
-        uiElement.GetComponentInChildren<Text>().text = newText;
+        text.GetComponent<Text>().text = newText;
+    }
+
+    public void activateTitle(bool active)
+    {
+        text.SetActive(!active);
+        title.SetActive(active);
     }
 }

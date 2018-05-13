@@ -11,6 +11,8 @@ public class Background : MonoBehaviour {
     public GameObject portal;
     public GameObject lamp;
 
+    public Sprite winPortal;
+
     Mesh floor;
     Mesh wall;
 
@@ -46,7 +48,7 @@ public class Background : MonoBehaviour {
                 if(Enemymanager.g_EnemyManager.numTotalEvents >= Enemymanager.g_EnemyManager.numToEndEvents)
                 {
                     currentDec.GetComponent<Portal>().SetHome();
-                    //TODO CHANGE SPRITE
+                    portal.gameObject.GetComponent<SpriteRenderer>().sprite = winPortal;
                 }
 
                 lamp.SetActive(true);
