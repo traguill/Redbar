@@ -11,6 +11,8 @@ public class Background : MonoBehaviour {
     Mesh floor;
     Mesh wall;
 
+    public GameObject[] decorationList;
+    GameObject currentDec = null;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,14 @@ public class Background : MonoBehaviour {
         Vector3 rightPosition = new Vector3(go_wall.transform.position.x + go_wall.mesh.bounds.size.x / 2, go_wall.transform.position.y, go_wall.transform.position.z);
         if(Camera.main.WorldToViewportPoint(rightPosition).x < 0)
         {
+            if (currentDec != null)
+                currentDec.SetActive(false);
+            int rndID = Random.Range(0, decorationList.Length + 4);
+            if(rndID < decorationList.Length)
+            {
+                currentDec = decorationList[rndID];
+                currentDec.SetActive(true);
+            }
             this.transform.position = new Vector3(transform.position.x + (go_wall.mesh.bounds.size.x * 5), transform.position.y, transform.position.z);
         }        
        
