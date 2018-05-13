@@ -17,11 +17,13 @@ public class Enemy : MonoBehaviour {
     [SerializeField] public EnemyType type;
     [SerializeField] public float speed;
     [SerializeField] public float loseDistance;
+    [SerializeField] public float mobileProb;
 
     private Transform target;
     private bool alreadyInteracted = false;
 
     private SpriteRenderer[] sprites;
+    private bool playerSafed = false;
 
     // Use this for initialization
     void Start () {
@@ -80,18 +82,37 @@ public class Enemy : MonoBehaviour {
         */
         transform.position += new Vector3(step, 0.0f, 0.0f);
         
-        if (Mathf.Abs(transform.position.x - target.position.x) < loseDistance && Game_Manager.g_GameManager.gameOver == false)
+        if (Mathf.Abs(transform.position.x - target.position.x) < loseDistance && Game_Manager.g_GameManager.gameOver == false && playerSafed == false)
         {
 
-            if(reacts) //TODO OR PLAYER CHOOSES CORRECT OPTION.
+            if(reacts && Game_Manager.g_GameManager.GetPlayerState() != Actions.Portal) //TODO OR PLAYER CHOOSES CORRECT OPTION.
             {
-                Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
-                Game_Manager.g_GameManager.gameOver = true;
+                if(Game_Manager.g_GameManager.GetPlayerState() == Actions.Mobile)
+                {
+                    int prob = Random.Range(0, 100);
+                    
+                    if(prob > mobileProb)
+                    {
+                        Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
+                        Game_Manager.g_GameManager.gameOver = true;
 
-                GamePadController.instance.SetTimer(0.5f);
-                StartCoroutine(GamePadController.instance.Vibrate());
-                Debug.Log("Game Over");
-                Destroy(gameObject);
+                        GamePadController.instance.SetTimer(0.5f);
+                        StartCoroutine(GamePadController.instance.Vibrate());
+                        Debug.Log("Game Over");
+                        Destroy(gameObject);
+                    }
+
+                    else
+                    {
+                        playerSafed = true;
+                    }
+                   
+                }
+            }
+
+            else
+            {
+                playerSafed = true;
             }
         }
     }
