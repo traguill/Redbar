@@ -15,7 +15,10 @@ public class Player : MonoBehaviour {
 
     bool stop = false;
     bool running = false;
+
+    bool sound_mobile = false;
     bool breathing = false;
+    bool sound_gate = false;
 
     public bool canPortal = false;
 
@@ -59,11 +62,21 @@ public class Player : MonoBehaviour {
         if(Input.GetButton("AButton") && canPortal)
         {
             PortalAction();
+            if (!sound_gate)
+            {
+                source.PlayOneShot(gate);
+                sound_gate = true;
+            }
         }
 
-        if(Input.GetButton("BButton"))
+        if (Input.GetButton("BButton"))
         {
             MobileAction();
+            if (!sound_mobile)
+            {
+                source.PlayOneShot(mobile);
+                sound_mobile = true;
+            }
         }
 
         if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1 && currentBoost >= 0.0f)
@@ -121,7 +134,6 @@ public class Player : MonoBehaviour {
     {
         anim.SetBool("isPhoneOut", true);
         currentState = Actions.Mobile;
-        source.PlayOneShot(mobile);
         IEnumerator coroutine = EndOnSeconds(2);
         StartCoroutine(coroutine);
     }
@@ -130,6 +142,7 @@ public class Player : MonoBehaviour {
     {
         anim.SetBool("isPhoneOut", false);
         anim.SetBool("isInsidePortal", false);
+        sound_mobile = sound_gate = false;
         currentState = Actions.None;
     }
 
@@ -137,7 +150,6 @@ public class Player : MonoBehaviour {
     {
         anim.SetBool("isInsidePortal", true);
         currentState = Actions.Portal;
-        source.PlayOneShot(gate);
         IEnumerator coroutine = EndOnSeconds(4);
         StartCoroutine(coroutine);
     }
