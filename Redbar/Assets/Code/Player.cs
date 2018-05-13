@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-enum Actions
+public enum Actions
 {
     Portal,
     Mobile,
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     DelegateAction action;
 
 
-    Actions currentState = Actions.None;
+    public Actions currentState = Actions.None;
 
 	// Use this for initialization
 	void Start () {

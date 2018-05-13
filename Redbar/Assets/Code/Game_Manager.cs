@@ -21,6 +21,11 @@ public class Game_Manager : MonoBehaviour {
 		
 	}
 
+    public Actions GetPlayerState()
+    {
+        return player.GetComponent<Player>().currentState;
+    }
+
     public void ShowMessage(string text)
     {
         message.GetComponent<Text>().text = text;
