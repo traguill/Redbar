@@ -19,15 +19,11 @@ public class Player : MonoBehaviour {
     public float bckMoveSpeed = 1.0f;
     public float bckMoveSpeedFast = 3.0f;
 
-    public delegate void DelegateAction();
-    DelegateAction action;
-
-
     public Actions currentState = Actions.None;
 
 	// Use this for initialization
 	void Start () {
-        action = NoAction;
+        NoAction();
 	}
 	
 	// Update is called once per frame
@@ -41,12 +37,12 @@ public class Player : MonoBehaviour {
         
         if(Input.GetButton("AButton"))
         {
-            action = PortalAction;
+            PortalAction();
         }
 
         if(Input.GetButton("BButton"))
         {
-            action = MobileAction;
+            MobileAction();
         }
 
         if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1)
@@ -74,6 +70,7 @@ public class Player : MonoBehaviour {
             step = 0.0f;
 
         transform.position += new Vector3(step, 0.0f, 0.0f);
+        
 	}
 
     void MobileAction()
@@ -99,6 +96,6 @@ public class Player : MonoBehaviour {
     {
         yield return new WaitForSeconds(seconds);
 
-        action = NoAction;
+        NoAction();
     }
 }
