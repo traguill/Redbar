@@ -24,7 +24,6 @@ public class Player : MonoBehaviour {
 
     Animator anim;
 
-
     public Actions currentState = Actions.None;
 
     void Awake()
@@ -34,7 +33,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        action = NoAction;
+        NoAction();
 	}
 	
 	// Update is called once per frame
@@ -48,12 +47,12 @@ public class Player : MonoBehaviour {
         
         if(Input.GetButton("AButton"))
         {
-            action = PortalAction;
+            PortalAction();
         }
 
         if(Input.GetButton("BButton"))
         {
-            action = MobileAction;
+            MobileAction();
         }
 
         if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1)
@@ -82,6 +81,7 @@ public class Player : MonoBehaviour {
 
         anim.SetFloat("speed", step);
         transform.position += new Vector3(step, 0.0f, 0.0f);
+        
 	}
 
     void MobileAction()
@@ -111,6 +111,6 @@ public class Player : MonoBehaviour {
     {
         yield return new WaitForSeconds(seconds);
 
-        action = NoAction;
+        NoAction();
     }
 }
