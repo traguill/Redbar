@@ -36,4 +36,9 @@ public class Portal : MonoBehaviour {
             player.gameObject.GetComponent<Player>().canPortal = false;
         }
     }
+
+    public void SetHome()
+    {
+        isHome = true;
+    }
 }
