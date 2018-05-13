@@ -8,7 +8,7 @@ public class GamePadController : MonoBehaviour {
     public static GamePadController instance;
 
     float initialTimer = 1.0f;
-    float timer = 1.0f;
+    float timer = 0.5f;
     bool gamepadFound = false;
     PlayerIndex playerIndex;
     float intensity = 0.5f;
@@ -53,7 +53,7 @@ public class GamePadController : MonoBehaviour {
                 yield return null;
             }
 
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
             timer = initialTimer;
         }
         

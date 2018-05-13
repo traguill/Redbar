@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour {
         float step = Time.deltaTime * speed;
 
         transform.position += new Vector3(step, 0.0f, 0.0f);
-        
+
         if (Mathf.Abs(transform.position.x - target.position.x) < loseDistance && Game_Manager.g_GameManager.gameOver == false && playerSafed == false)
         {
 
@@ -101,8 +101,7 @@ public class Enemy : MonoBehaviour {
                     {
                         Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
                         Game_Manager.g_GameManager.gameOver = true;
-
-                        GamePadController.instance.SetTimer(0.5f);
+                        
                         StartCoroutine(GamePadController.instance.Vibrate());
                         Debug.Log("Game Over");
                         Destroy(gameObject);
@@ -115,6 +114,17 @@ public class Enemy : MonoBehaviour {
                     }
                    
                 }
+
+                else
+                {
+
+                    Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
+                    Game_Manager.g_GameManager.gameOver = true;
+
+                    StartCoroutine(GamePadController.instance.Vibrate());
+                    Debug.Log("Game Over");
+                    Destroy(gameObject);
+                }
             }
 
             else
@@ -124,6 +134,8 @@ public class Enemy : MonoBehaviour {
             }
         }
 
+        else if (Mathf.Abs(transform.position.x - target.position.x) < (loseDistance + 4)) //Getting close
+            StartCoroutine(GamePadController.instance.Vibrate());
 
         if (Game_Manager.g_GameManager.gameOver)
             Destroy(gameObject);
