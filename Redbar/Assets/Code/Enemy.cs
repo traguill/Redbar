@@ -74,10 +74,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if(playerSafed)
-        {
-            CheckOutOfCam();
-        }
+      
 
 		if(reacts && !alreadyInteracted)
         {
@@ -152,13 +149,5 @@ public class Enemy : MonoBehaviour {
         yield return GamePadController.instance.Vibrate();
 
     }
-
-    void CheckOutOfCam()
-    {
-
-         if (GeometryUtility.TestPlanesAABB(planes, boxCol.bounds) == false)
-         {
-             Destroy(gameObject);
-         }
-    }
+    
 }
