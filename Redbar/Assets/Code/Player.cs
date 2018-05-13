@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     public float animMult = 2.0f;
 
     bool stop = false;
-    bool running = false;
+    public bool running = false;
 
     bool sound_mobile = false;
     bool breathing = false;

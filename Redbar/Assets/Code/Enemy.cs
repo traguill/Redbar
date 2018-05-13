@@ -116,12 +116,22 @@ public class Enemy : MonoBehaviour {
 
                 else
                 {
+                    int runnChance = Random.Range(0, 100);
+                    if(Game_Manager.g_GameManager.player.GetComponent<Player>().running && runnChance < 80)
+                    {
+                        playerSafed = true;
+                        Enemymanager.g_EnemyManager.NotifyEventEnd();
+                    }
+                    else
+                    {
+                        Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
+                        Game_Manager.g_GameManager.gameOver = true;
 
-                    Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
-                    Game_Manager.g_GameManager.gameOver = true;
+                        StartCoroutine(GamePadController.instance.Vibrate());
+                        Debug.Log("Game Over");
+                    }
+                    
 
-                    StartCoroutine(GamePadController.instance.Vibrate());
-                    Debug.Log("Game Over");
                 }
             }
 

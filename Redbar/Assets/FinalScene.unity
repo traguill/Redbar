@@ -834,7 +834,7 @@ MonoBehaviour:
   message: {fileID: 2047735197}
   player: {fileID: 1861222954}
   ui: {fileID: 1307279529}
-  introTimer: 0
+  introTimer: 8
   introShown: 0
   titleShown: 0
   isTutorialFinished: 0
