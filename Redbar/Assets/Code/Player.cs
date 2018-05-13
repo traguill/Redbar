@@ -12,6 +12,7 @@ public enum Actions
 
 public class Player : MonoBehaviour {
 
+    public float animMult = 2.0f;
 
     bool stop = false;
     bool running = false;
@@ -118,6 +119,11 @@ public class Player : MonoBehaviour {
         // Move Objects to the left
         float step = Time.deltaTime * (!running ? bckMoveSpeed : bckMoveSpeedFast);
 
+        if (running)
+            anim.SetFloat("speedMult", animMult);
+        else
+            anim.SetFloat("speedMult", 1.0f);
+
         if (stop || currentState == Actions.Portal)
         {
             step = 0.0f;
@@ -126,8 +132,8 @@ public class Player : MonoBehaviour {
         anim.SetFloat("speed", step);
         transform.position += new Vector3(step, 0.0f, 0.0f);
 
-        if (Game_Manager.g_GameManager.gameOver)
-            Destroy(gameObject);
+        
+           
 	}
 
     void MobileAction()
