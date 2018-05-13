@@ -79,10 +79,14 @@ public class Enemy : MonoBehaviour {
 
         if (Vector3.Distance(transform.position, target.position) < loseDistance)
         {
-            // TODO SHOW GAME OVER SCREEN
             GamePadController.instance.SetTimer(2.0f);
             StartCoroutine(GamePadController.instance.Vibrate());
-            Debug.Log("Game Over");
+
+            if(reacts) //TODO OR PLAYER CHOOSES CORRECT OPTION.
+            {
+                // TODO SHOW GAME OVER SCREEN
+                Debug.Log("Game Over");
+            }
         }
     }
 

@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+enum Actions
+{
+    Portal,
+    Mobile,
+    None
+}
+
 public class Player : MonoBehaviour {
 
 
@@ -15,12 +22,8 @@ public class Player : MonoBehaviour {
     public delegate void DelegateAction();
     DelegateAction action;
 
-    enum Actions
-    {
-        Portal,
-        Mobile,
-        None
-    }
+
+    Actions currentState = Actions.None;
 
 	// Use this for initialization
 	void Start () {
@@ -75,16 +78,27 @@ public class Player : MonoBehaviour {
 
     void MobileAction()
     {
-
+        currentState = Actions.Mobile;
+        IEnumerator coroutine = EndOnSeconds(2); //TODO ANIMATION LENGTH
+        StartCoroutine(coroutine);
     }
 
     void NoAction()
     {
-
+        currentState = Actions.None;
     }
 
     void PortalAction()
     {
+        currentState = Actions.Portal;
+        IEnumerator coroutine = EndOnSeconds(4);
+        StartCoroutine(coroutine);
+    }
 
+    IEnumerator EndOnSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        action = NoAction;
     }
 }
