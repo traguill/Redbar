@@ -115,6 +115,10 @@ public class Enemy : MonoBehaviour {
                 playerSafed = true;
             }
         }
+
+
+        if (Game_Manager.g_GameManager.gameOver)
+            Destroy(gameObject);
     }
 
     IEnumerator Interact()
