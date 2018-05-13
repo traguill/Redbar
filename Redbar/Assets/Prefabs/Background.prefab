@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706010648568908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4016685, y: -0.6621685, z: -0.14235663}
+  m_LocalPosition: {x: -5, y: -0.6621685, z: -0.14235663}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4337978654403130}
@@ -223,3 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   go_floor: {fileID: 33822961310337944}
   go_wall: {fileID: 33038617079989882}
+  portal: {fileID: 0}
+  lamp: {fileID: 0}
+  winPortal: {fileID: 21300000, guid: ceafbf3bc9930fb48bb49bb8dba86371, type: 3}
+  decorationList: []
