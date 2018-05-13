@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 0b99279e1b9ec1148a5e6fb07c624b54
-timeCreated: 1526186373
+guid: 35247758d994aad46b062fd0fbb49565
+timeCreated: 1526187918
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Windows_0
-    21300002: Windows_1
-    21300004: Windows_2
+    21300000: Windows (1)_0
+    21300002: Windows (1)_1
+    21300004: Windows (1)_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -94,43 +94,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Windows_0
+      name: Windows (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 46.666668
-        height: 74
+        width: 40
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Windows_1
+      name: Windows (1)_1
       rect:
         serializedVersion: 2
-        x: 46
+        x: 40
         y: 0
-        width: 46.666668
-        height: 74
+        width: 40
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Windows_2
+      name: Windows (1)_2
       rect:
         serializedVersion: 2
-        x: 92
+        x: 80
         y: 0
-        width: 46.666668
-        height: 74
+        width: 40
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
