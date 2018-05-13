@@ -81,12 +81,18 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator Interact()
     {
+        alreadyInteracted = true;
+
         yield return new WaitForSeconds(Random.Range(0.5f, 1));
         // TODO DISPLAY RANDOM SENTENCE
-        StopCoroutine("Vibrate");
+        
+        int dialogue = Random.Range(0, Game_Manager.g_GameManager.dialogue.Count - 1);
+        Game_Manager.g_GameManager.ShowMessage(Game_Manager.g_GameManager.dialogue[dialogue]);
+        yield return null;
+
+
         GamePadController.instance.SetTimer(0.5f);
-        StartCoroutine(GamePadController.instance.Vibrate());
-        Game_Manager.g_GameManager.ShowMessage("hey girl");
-        alreadyInteracted = true;
+        yield return GamePadController.instance.Vibrate();
+
     }
 }
