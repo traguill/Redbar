@@ -22,6 +22,16 @@ public class Enemymanager : MonoBehaviour
     [Header("Num interactions to finish")]
     public int numToEndEvents = 10;
 
+    [Header("Enemies: To Set Up")]
+    public Enemy drunk;
+    public Enemy car;
+    public Enemy group;
+    public Enemy silhouette;
+
+    Enemy currentEnemy = null;
+    public Vector3 spawnLocationRight;
+    public Vector3 spawnLocationLeft;
+
     enum Enemies
     {
         DRUNK,
@@ -73,23 +83,33 @@ public class Enemymanager : MonoBehaviour
     public void SpawnDrunk(bool interact)
     {
         numTotalEvents++;
-        
+        SpawnEnemy(drunk, interact);
     }
 
     public void SpawnCar(bool interact)
     {
         numTotalEvents++;
+        SpawnEnemy(car, interact);
     }
 
     public void SpawnGroup(bool interact)
     {
         numTotalEvents++;
-        //Instantiate group
+        SpawnEnemy(group, interact);
     }
 
     public void SpawnSilhouette(bool interact)
     {
         numTotalEvents++;
+        SpawnEnemy(silhouette, interact);
+    }
+
+    private void SpawnEnemy(Enemy copy, bool interact)
+    {
+        Vector3 spawnLoc = Random.Range(0, 1) == 0 ? spawnLocationLeft : spawnLocationRight;
+        spawnLoc += Game_Manager.g_GameManager.player.transform.position;
+        currentEnemy = Instantiate(copy, spawnLoc, Quaternion.identity);
+        currentEnemy.Init(interact);
     }
 
     void SpawnRndEvent()
