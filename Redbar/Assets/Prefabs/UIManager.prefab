@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiElement: {fileID: 0}
+  title: {fileID: 0}
+  text: {fileID: 0}
   introText: "\u201CHey mom, I\u2019m coming back home\u201D \u2026 \u201CNo, don\u2019t
     worry, I will be accompanied till our doorstep!\u201D "
   winText: The feeling of terror is deeply embedded in her. Having been frightened

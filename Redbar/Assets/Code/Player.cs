@@ -16,6 +16,10 @@ public class Player : MonoBehaviour {
     bool stop = false;
     bool running = false;
 
+    bool sound_mobile = false;
+    bool breathing = false;
+    bool sound_gate = false;
+
     public bool canPortal = false;
 
     public float bckMoveSpeed = 1.0f;
@@ -23,6 +27,11 @@ public class Player : MonoBehaviour {
     public float timeBoost = 3.0f;
     public float currentBoost = 3.0f;
     public float timeToCharge = 4.0f;
+
+    public AudioSource source;
+    public AudioClip mobile;
+    public AudioClip breath;
+    public AudioClip gate;
 
     public delegate void DelegateAction();
     DelegateAction action;
@@ -53,11 +62,21 @@ public class Player : MonoBehaviour {
         if(Input.GetButton("AButton") && canPortal)
         {
             PortalAction();
+            if (!sound_gate)
+            {
+                source.PlayOneShot(gate);
+                sound_gate = true;
+            }
         }
 
-        if(Input.GetButton("BButton"))
+        if (Input.GetButton("BButton"))
         {
             MobileAction();
+            if (!sound_mobile)
+            {
+                source.PlayOneShot(mobile);
+                sound_mobile = true;
+            }
         }
 
         if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1 && currentBoost >= 0.0f)
@@ -65,18 +84,25 @@ public class Player : MonoBehaviour {
             currentBoost -= Time.deltaTime;
             running = true;
             stop = false;
+            if (!breathing)
+            {
+                source.PlayOneShot(breath);
+                breathing = true;
+            }
         }
 
         else if(Input.GetAxis("LeftJoystickVertical") < -0.1f)
         {
             running = false;
             stop = false;
+            breathing = false;
         }
 
         else
         {
             stop = true;
             running = false;
+            breathing = false;
         }
 
         if(currentBoost <= 0 && timeToCharge > 0)
@@ -116,6 +142,7 @@ public class Player : MonoBehaviour {
     {
         anim.SetBool("isPhoneOut", false);
         anim.SetBool("isInsidePortal", false);
+        sound_mobile = sound_gate = false;
         currentState = Actions.None;
     }
 
