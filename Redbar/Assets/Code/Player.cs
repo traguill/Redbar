@@ -18,6 +18,9 @@ public class Player : MonoBehaviour {
 
     public float bckMoveSpeed = 1.0f;
     public float bckMoveSpeedFast = 3.0f;
+    public float timeBoost = 3.0f;
+    public float currentBoost = 3.0f;
+    public float timeToCharge = 4.0f;
 
     public delegate void DelegateAction();
     DelegateAction action;
@@ -55,8 +58,9 @@ public class Player : MonoBehaviour {
             MobileAction();
         }
 
-        if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1)
+        if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1 && currentBoost >= 0.0f)
         {
+            currentBoost -= Time.deltaTime;
             running = true;
             stop = false;
         }
@@ -73,6 +77,16 @@ public class Player : MonoBehaviour {
             running = false;
         }
 
+        if(currentBoost <= 0 && timeToCharge > 0)
+        {
+            timeToCharge -= Time.deltaTime;
+        }
+
+        else if(currentBoost <= 0 && timeToCharge <= 0)
+        {
+            timeToCharge = 4.0f;
+            currentBoost = timeBoost;
+        }
         // Move Objects to the left
         float step = Time.deltaTime * (!running ? bckMoveSpeed : bckMoveSpeedFast);
 
