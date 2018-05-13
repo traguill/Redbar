@@ -84,7 +84,6 @@ public class Enemy : MonoBehaviour {
         alreadyInteracted = true;
 
         yield return new WaitForSeconds(Random.Range(0.5f, 1));
-        // TODO DISPLAY RANDOM SENTENCE
         
         int dialogue = Random.Range(0, Game_Manager.g_GameManager.dialogue.Count - 1);
         Game_Manager.g_GameManager.ShowMessage(Game_Manager.g_GameManager.dialogue[dialogue]);
