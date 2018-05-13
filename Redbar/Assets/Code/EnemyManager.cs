@@ -79,6 +79,17 @@ public class Enemymanager : MonoBehaviour
 
     }
 
+    public void NotifyEventEnd()
+    {
+        numTotalEvents++;
+        if (numTotalEvents == numToEndEvents)
+        {
+            //TODO: WIN!!!
+        }
+        else
+            SpawnEvent();
+    }
+
     public void SpawnEvent()
     {
         if (Tutorial.g_tutorial.done == false)
@@ -90,25 +101,25 @@ public class Enemymanager : MonoBehaviour
     // Init Enemies if tutorial is not over notify tutorial if not notify itself
     public void SpawnDrunk(bool interact)
     {
-        numTotalEvents++;
+        
         SpawnEnemy(drunk, interact);
     }
 
     public void SpawnCar(bool interact)
     {
-        numTotalEvents++;
+        
         SpawnEnemy(car, interact);
     }
 
     public void SpawnGroup(bool interact)
     {
-        numTotalEvents++;
+        
         SpawnEnemy(group, interact);
     }
 
     public void SpawnSilhouette(bool interact)
     {
-        numTotalEvents++;
+        
         SpawnEnemy(silhouette, interact);
     }
 

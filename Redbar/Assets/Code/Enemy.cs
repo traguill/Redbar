@@ -25,6 +25,15 @@ public class Enemy : MonoBehaviour {
     private SpriteRenderer[] sprites;
     private bool playerSafed = false;
 
+    BoxCollider boxCol;
+    Plane[] planes;
+    void Awake()
+    {
+        boxCol = GetComponent<BoxCollider>();
+        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+
+    }
+
     // Use this for initialization
     void Start () {
         target = Game_Manager.g_GameManager.player.transform;
@@ -56,30 +65,18 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if(playerSafed)
+        {
+            CheckOutOfCam();
+        }
+
 		if(reacts && !alreadyInteracted)
         {
             StartCoroutine("Interact");
         }
 
         float step = Time.deltaTime * speed;
-        /*
-        if(target.position.x < transform.position.x)
-        {
-            step = -step;
-            foreach(SpriteRenderer sprite in sprites)
-            {
-                sprite.flipX = true;
-            }
-        }
 
-        else
-        {
-            foreach (SpriteRenderer sprite in sprites)
-            {
-                sprite.flipX = false;
-            }
-        }
-        */
         transform.position += new Vector3(step, 0.0f, 0.0f);
         
         if (Mathf.Abs(transform.position.x - target.position.x) < loseDistance && Game_Manager.g_GameManager.gameOver == false && playerSafed == false)
@@ -105,6 +102,7 @@ public class Enemy : MonoBehaviour {
                     else
                     {
                         playerSafed = true;
+                        Enemymanager.g_EnemyManager.NotifyEventEnd();
                     }
                    
                 }
@@ -113,6 +111,7 @@ public class Enemy : MonoBehaviour {
             else
             {
                 playerSafed = true;
+                Enemymanager.g_EnemyManager.NotifyEventEnd();
             }
         }
 
@@ -135,5 +134,14 @@ public class Enemy : MonoBehaviour {
         GamePadController.instance.SetTimer(0.5f);
         yield return GamePadController.instance.Vibrate();
 
+    }
+
+    void CheckOutOfCam()
+    {
+
+         if (GeometryUtility.TestPlanesAABB(planes, boxCol.bounds) == false)
+         {
+             Destroy(gameObject);
+         }
     }
 }
