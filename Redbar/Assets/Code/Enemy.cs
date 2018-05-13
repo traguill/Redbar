@@ -67,25 +67,28 @@ public class Enemy : MonoBehaviour {
         {
             GamePadController.instance.SetTimer(0.5f);
             StartCoroutine(GamePadController.instance.Vibrate());
-            Debug.Log("Game Over");
+
         }
 
         if (Vector3.Distance(transform.position, target.position) < (loseDistance + 5))
         {
-            GamePadController.instance.SetTimer(1.0f);
+            GamePadController.instance.SetTimer(0.5f);
             StartCoroutine(GamePadController.instance.Vibrate());
-            Debug.Log("Game Over");
+
         }
 
-        if (Vector3.Distance(transform.position, target.position) < loseDistance)
+        if (Vector3.Distance(transform.position, target.position) < loseDistance && !Game_Manager.g_GameManager.gameOver)
         {
-            GamePadController.instance.SetTimer(2.0f);
+            GamePadController.instance.SetTimer(0.5f);
             StartCoroutine(GamePadController.instance.Vibrate());
 
             if(reacts) //TODO OR PLAYER CHOOSES CORRECT OPTION.
             {
                 // TODO SHOW GAME OVER SCREEN
+                Game_Manager.g_GameManager.gameOver = true;
+
                 Debug.Log("Game Over");
+                Destroy(gameObject);
             }
         }
     }

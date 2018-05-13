@@ -11,7 +11,7 @@ public class Game_Manager : MonoBehaviour {
     [SerializeField] public GameObject player;
 
     public bool isTutorialFinished = false;
-
+    public bool gameOver = false;
     void Awake () {
         g_GameManager = this;
 	}
