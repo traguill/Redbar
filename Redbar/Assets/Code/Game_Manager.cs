@@ -33,4 +33,5 @@ public class Game_Manager : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
         message.SetActive(false);
     }
+
 }

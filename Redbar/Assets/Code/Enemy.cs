@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour {
     [SerializeField] public bool reacts = false;
     [SerializeField] public EnemyType type;
     [SerializeField] public float speed;
+    [SerializeField] public float loseDistance;
 
     private Transform target;
     private bool alreadyInteracted = false;
@@ -61,12 +62,38 @@ public class Enemy : MonoBehaviour {
         }
 
         transform.position += new Vector3(step, 0.0f, 0.0f);
+
+        if (Vector3.Distance(transform.position, target.position) < (loseDistance + 7))
+        {
+            GamePadController.instance.SetTimer(0.5f);
+            StartCoroutine(GamePadController.instance.Vibrate());
+            Debug.Log("Game Over");
+        }
+
+        if (Vector3.Distance(transform.position, target.position) < (loseDistance + 5))
+        {
+            GamePadController.instance.SetTimer(1.0f);
+            StartCoroutine(GamePadController.instance.Vibrate());
+            Debug.Log("Game Over");
+        }
+
+        if (Vector3.Distance(transform.position, target.position) < loseDistance)
+        {
+            // TODO SHOW GAME OVER SCREEN
+            GamePadController.instance.SetTimer(2.0f);
+            StartCoroutine(GamePadController.instance.Vibrate());
+            Debug.Log("Game Over");
+        }
     }
 
     IEnumerator Interact()
     {
         yield return new WaitForSeconds(Random.Range(0.5f, 1));
-        Game_Manager.g_GameManager.ShowMessage("hey blondie");
+        // TODO DISPLAY RANDOM SENTENCE
+
+        GamePadController.instance.SetTimer(0.5f);
+        StartCoroutine(GamePadController.instance.Vibrate());
+        Game_Manager.g_GameManager.ShowMessage("hey girl");
         alreadyInteracted = true;
     }
 }

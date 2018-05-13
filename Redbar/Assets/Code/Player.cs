@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour {
 
 
@@ -11,9 +12,19 @@ public class Player : MonoBehaviour {
     public float bckMoveSpeed = 1.0f;
     public float bckMoveSpeedFast = 3.0f;
 
+    public delegate void DelegateAction();
+    DelegateAction action;
+
+    enum Actions
+    {
+        Portal,
+        Mobile,
+        None
+    }
+
 	// Use this for initialization
 	void Start () {
-
+        action = NoAction;
 	}
 	
 	// Update is called once per frame
@@ -27,13 +38,12 @@ public class Player : MonoBehaviour {
         
         if(Input.GetButton("AButton"))
         {
-            StartCoroutine(GamePadController.instance.Vibrate());
-            //Enter portal
+            action = PortalAction;
         }
 
         if(Input.GetButton("BButton"))
         {
-            //Mobile phone
+            action = MobileAction;
         }
 
         if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1)
@@ -62,4 +72,19 @@ public class Player : MonoBehaviour {
 
         transform.position += new Vector3(step, 0.0f, 0.0f);
 	}
+
+    void MobileAction()
+    {
+
+    }
+
+    void NoAction()
+    {
+
+    }
+
+    void PortalAction()
+    {
+
+    }
 }
