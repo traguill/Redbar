@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour {
 
             if(reacts) //TODO OR PLAYER CHOOSES CORRECT OPTION.
             {
-                Game_Manager.g_GameManager.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.GetComponent<UIManager>().loseText);
+                Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().loseText);
                 Game_Manager.g_GameManager.gameOver = true;
 
                 GamePadController.instance.SetTimer(0.5f);
