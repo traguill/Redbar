@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     bool stop = false;
     bool running = false;
 
+    public bool canPortal = false;
+
     public float bckMoveSpeed = 1.0f;
     public float bckMoveSpeedFast = 3.0f;
     public float timeBoost = 3.0f;
@@ -48,7 +50,7 @@ public class Player : MonoBehaviour {
                     running = false;
         #endif
         
-        if(Input.GetButton("AButton"))
+        if(Input.GetButton("AButton") && canPortal)
         {
             PortalAction();
         }
