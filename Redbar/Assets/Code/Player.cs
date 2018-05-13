@@ -99,7 +99,9 @@ public class Player : MonoBehaviour {
 
         anim.SetFloat("speed", step);
         transform.position += new Vector3(step, 0.0f, 0.0f);
-        
+
+        if (Game_Manager.g_GameManager.gameOver)
+            Destroy(gameObject);
 	}
 
     void MobileAction()

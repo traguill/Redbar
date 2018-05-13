@@ -20,6 +20,12 @@ public class Portal : MonoBehaviour {
         if(player.gameObject.GetComponent<Player>() != null)
         {
             player.gameObject.GetComponent<Player>().canPortal = true;
+            if (isHome)
+            {
+                Game_Manager.g_GameManager.ui.GetComponent<UIManager>().changeText(Game_Manager.g_GameManager.ui.GetComponent<UIManager>().winText);
+                Game_Manager.g_GameManager.gameOver = true;
+
+            }
         }
     }
 
@@ -29,5 +35,10 @@ public class Portal : MonoBehaviour {
         {
             player.gameObject.GetComponent<Player>().canPortal = false;
         }
+    }
+
+    public void SetHome()
+    {
+        isHome = true;
     }
 }

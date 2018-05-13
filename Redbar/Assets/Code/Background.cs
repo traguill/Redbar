@@ -43,6 +43,12 @@ public class Background : MonoBehaviour {
             {
                 currentDec = portal;
                 currentDec.SetActive(true);
+                if(Enemymanager.g_EnemyManager.numTotalEvents >= Enemymanager.g_EnemyManager.numToEndEvents)
+                {
+                    currentDec.GetComponent<Portal>().SetHome();
+                    //TODO CHANGE SPRITE
+                }
+
                 lamp.SetActive(true);
             }else
             if(rndID < decorationList.Length)
