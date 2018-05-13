@@ -25,7 +25,7 @@ public class Game_Manager : MonoBehaviour {
     {
         message.GetComponent<Text>().text = text;
         message.SetActive(true);
-
+        StartCoroutine("DeactivateMessage");
     }
 
     IEnumerator DeactivateMessage()
