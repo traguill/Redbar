@@ -8,6 +8,9 @@ public class Background : MonoBehaviour {
     public MeshFilter go_floor;
     public MeshFilter go_wall;
 
+    public GameObject portal;
+    public GameObject lamp;
+
     Mesh floor;
     Mesh wall;
 
@@ -31,6 +34,17 @@ public class Background : MonoBehaviour {
             if (currentDec != null)
                 currentDec.SetActive(false);
             int rndID = Random.Range(0, decorationList.Length + 4);
+            int rndLamp = Random.Range(0, 100);
+            if (rndLamp < 70)
+                lamp.SetActive(true);
+            else
+                lamp.SetActive(false);
+            if(rndID == decorationList.Length)
+            {
+                currentDec = portal;
+                currentDec.SetActive(true);
+                lamp.SetActive(true);
+            }else
             if(rndID < decorationList.Length)
             {
                 currentDec = decorationList[rndID];
