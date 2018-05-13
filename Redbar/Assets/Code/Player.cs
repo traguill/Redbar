@@ -22,12 +22,18 @@ public class Player : MonoBehaviour {
     public delegate void DelegateAction();
     DelegateAction action;
 
+    Animator anim;
 
     public Actions currentState = Actions.None;
 
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
 	// Use this for initialization
 	void Start () {
-        action = NoAction;
+        NoAction();
 	}
 	
 	// Update is called once per frame
@@ -41,12 +47,12 @@ public class Player : MonoBehaviour {
         
         if(Input.GetButton("AButton"))
         {
-            action = PortalAction;
+            PortalAction();
         }
 
         if(Input.GetButton("BButton"))
         {
-            action = MobileAction;
+            MobileAction();
         }
 
         if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1)
@@ -73,11 +79,14 @@ public class Player : MonoBehaviour {
         if (stop)
             step = 0.0f;
 
+        anim.SetFloat("speed", step);
         transform.position += new Vector3(step, 0.0f, 0.0f);
+        
 	}
 
     void MobileAction()
     {
+        anim.SetBool("isPhoneOut", true);
         currentState = Actions.Mobile;
         IEnumerator coroutine = EndOnSeconds(2); //TODO ANIMATION LENGTH
         StartCoroutine(coroutine);
@@ -85,11 +94,14 @@ public class Player : MonoBehaviour {
 
     void NoAction()
     {
+        anim.SetBool("isPhoneOut", false);
+        anim.SetBool("isInsidePortal", false);
         currentState = Actions.None;
     }
 
     void PortalAction()
     {
+        anim.SetBool("isInsidePortal", true);
         currentState = Actions.Portal;
         IEnumerator coroutine = EndOnSeconds(4);
         StartCoroutine(coroutine);
@@ -99,6 +111,6 @@ public class Player : MonoBehaviour {
     {
         yield return new WaitForSeconds(seconds);
 
-        action = NoAction;
+        NoAction();
     }
 }
