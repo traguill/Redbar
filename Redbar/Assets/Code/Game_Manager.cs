@@ -12,6 +12,8 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] public GameObject ui;
 
+    public float introTimer = 3.0f;
+    public bool introShown = false;
     public bool isTutorialFinished = false;
     public bool gameOver = false;
     private bool fade_initiating = false;
@@ -31,10 +33,25 @@ public class Game_Manager : MonoBehaviour
         dialogue.Add("Don’t be scared, I just want to know you.");
         dialogue.Add("Hey girl you look so cute.");
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void Start()
     {
+        ui.GetComponent<UIManager>().changeText(ui.GetComponent<UIManager>().introText);
+        ui.GetComponent<UIManager>().FadeIn();
+    }
+    // Update is called once per frame
+    void Update ()
+    {
+        if(introTimer >= 0 && !introShown)
+        {
+            introTimer -= Time.deltaTime;
+        }
+        else if(introTimer <= 0 && !introShown)
+        {
+            ui.GetComponent<UIManager>().FadeOut();
+            introShown = true;
+        }
+
         if(gameOver == true && fade_initiating == false)
         {
             fade_initiating = true;
