@@ -813,6 +813,7 @@ MonoBehaviour:
   go_wall: {fileID: 33783860697661746}
   portal: {fileID: 1160012979803306}
   lamp: {fileID: 1524475819826378}
+  winPortal: {fileID: 21300000, guid: ceafbf3bc9930fb48bb49bb8dba86371, type: 3}
   decorationList:
   - {fileID: 1202648090820036}
   - {fileID: 1512528114187308}

@@ -25,12 +25,12 @@ public class Tutorial : MonoBehaviour {
     public void LaunchTutorialEvent()
     {
         int[] rndPool = new int[5 - actionsCompleted];
-
-        if (event_carNoInteract) rndPool[rndPool.Length] = 0;
-        if (event_carInteract) rndPool[rndPool.Length] = 1;
-        if (event_peopleNoInteract1) rndPool[rndPool.Length] = 2;
-        if (event_peopleNoInteract2) rndPool[rndPool.Length] = 3;
-        if (event_peopleInteract) rndPool[rndPool.Length] = 4;
+        int counter = 0;
+        if (!event_carNoInteract)            {rndPool[counter] = 0;    counter++;   }
+        if (!event_carInteract)              {rndPool[counter] = 1;    counter++;   }
+        if (!event_peopleNoInteract1)        {rndPool[counter] = 2;    counter++;   }
+        if (!event_peopleNoInteract2)        {rndPool[counter] = 3;    counter++;   }
+        if (!event_peopleInteract)           {rndPool[counter] = 4;    counter++;   }
 
         int eventId = Random.Range(0, rndPool.Length - 1);
 

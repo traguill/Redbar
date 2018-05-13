@@ -125,7 +125,7 @@ public class Enemymanager : MonoBehaviour
 
     private void SpawnEnemy(Enemy copy, bool interact)
     {
-        Vector3 spawnLoc = Random.Range(0, 1) == 0 ? spawnLocationLeft : spawnLocationRight;
+        Vector3 spawnLoc = spawnLocationRight;
         spawnLoc += Game_Manager.g_GameManager.player.transform.position;
         currentEnemy = Instantiate(copy, spawnLoc, Quaternion.identity);
         currentEnemy.Init(interact);
