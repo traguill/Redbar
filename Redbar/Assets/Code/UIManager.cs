@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     public CanvasGroup uiElement;
 
+    public string introText;
     public string winText;
     public string loseText;
     public string creditsText;
