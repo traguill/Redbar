@@ -50,6 +50,8 @@ public class Game_Manager : MonoBehaviour
         {
             ui.GetComponent<UIManager>().FadeOut();
             introShown = true;
+            // Spawn tutorial
+            Enemymanager.g_EnemyManager.SpawnEvent();
         }
 
         if(gameOver == true && fade_initiating == false)
