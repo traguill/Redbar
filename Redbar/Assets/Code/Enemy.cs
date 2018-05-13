@@ -104,7 +104,6 @@ public class Enemy : MonoBehaviour {
                         
                         StartCoroutine(GamePadController.instance.Vibrate());
                         Debug.Log("Game Over");
-                        Destroy(gameObject);
                     }
 
                     else
@@ -123,7 +122,6 @@ public class Enemy : MonoBehaviour {
 
                     StartCoroutine(GamePadController.instance.Vibrate());
                     Debug.Log("Game Over");
-                    Destroy(gameObject);
                 }
             }
 
@@ -136,9 +134,7 @@ public class Enemy : MonoBehaviour {
 
         else if (Mathf.Abs(transform.position.x - target.position.x) < (loseDistance + 4)) //Getting close
             StartCoroutine(GamePadController.instance.Vibrate());
-
-        if (Game_Manager.g_GameManager.gameOver)
-            Destroy(gameObject);
+        
     }
 
     IEnumerator Interact()
