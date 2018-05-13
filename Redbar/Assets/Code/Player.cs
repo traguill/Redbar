@@ -92,8 +92,10 @@ public class Player : MonoBehaviour {
         // Move Objects to the left
         float step = Time.deltaTime * (!running ? bckMoveSpeed : bckMoveSpeedFast);
 
-        if (stop)
+        if (stop || currentState == Actions.Portal)
+        {
             step = 0.0f;
+        }
 
         anim.SetFloat("speed", step);
         transform.position += new Vector3(step, 0.0f, 0.0f);
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour {
     {
         anim.SetBool("isPhoneOut", true);
         currentState = Actions.Mobile;
-        IEnumerator coroutine = EndOnSeconds(2); //TODO ANIMATION LENGTH
+        IEnumerator coroutine = EndOnSeconds(2);
         StartCoroutine(coroutine);
     }
 

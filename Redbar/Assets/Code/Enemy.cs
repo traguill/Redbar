@@ -28,6 +28,23 @@ public class Enemy : MonoBehaviour {
         target = Game_Manager.g_GameManager.player.transform;
         sprites = GetComponentsInChildren<SpriteRenderer>();
 
+        if (target.position.x < transform.position.x)
+        {
+            speed = -speed;
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                sprite.flipX = true;
+            }
+        }
+
+        else
+        {
+            foreach (SpriteRenderer sprite in sprites)
+            {
+                sprite.flipX = false;
+            }
+        }
+
     }
 
     public void Init(bool reaction)
@@ -43,7 +60,7 @@ public class Enemy : MonoBehaviour {
         }
 
         float step = Time.deltaTime * speed;
-
+        /*
         if(target.position.x < transform.position.x)
         {
             step = -step;
@@ -60,7 +77,7 @@ public class Enemy : MonoBehaviour {
                 sprite.flipX = false;
             }
         }
-
+        */
         transform.position += new Vector3(step, 0.0f, 0.0f);
         
         if (Mathf.Abs(transform.position.x - target.position.x) < loseDistance && Game_Manager.g_GameManager.gameOver == false)
