@@ -37,7 +37,16 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         target = Game_Manager.g_GameManager.player.transform;
-        sprites = GetComponentsInChildren<SpriteRenderer>();
+
+        if (gameObject.GetComponent<SpriteRenderer>() == null)
+        {
+            sprites = GetComponentsInChildren<SpriteRenderer>();
+        }
+
+        else
+        {
+            sprites[0] = gameObject.GetComponent<SpriteRenderer>();
+        }
 
         if (target.position.x < transform.position.x)
         {
