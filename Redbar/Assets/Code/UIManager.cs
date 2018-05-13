@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public CanvasGroup uiElement;
 
     public GameObject title;
+    public GameObject authors;
     public GameObject text;
 
     public string introText;
@@ -57,5 +58,6 @@ public class UIManager : MonoBehaviour
     {
         text.SetActive(!active);
         title.SetActive(active);
+        authors.SetActive(active);
     }
 }
