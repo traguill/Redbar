@@ -79,6 +79,14 @@ public class Enemymanager : MonoBehaviour
 
     }
 
+    public void SpawnEvent()
+    {
+        if (Tutorial.g_tutorial.done == false)
+            Tutorial.g_tutorial.LaunchTutorialEvent();
+        else
+            SpawnRndEvent();
+    }
+
     // Init Enemies if tutorial is not over notify tutorial if not notify itself
     public void SpawnDrunk(bool interact)
     {

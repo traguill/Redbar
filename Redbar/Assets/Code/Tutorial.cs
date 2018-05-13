@@ -12,6 +12,15 @@ public class Tutorial : MonoBehaviour {
     bool event_peopleInteract = false;      // 4
 
     int actionsCompleted = 0; // To 5
+    public bool done = false;
+
+    [HideInInspector]
+    public static Tutorial g_tutorial;
+
+    void Awake()
+    {
+        g_tutorial = this;
+    }
     
     public void LaunchTutorialEvent()
     {
