@@ -65,7 +65,10 @@ public class Tutorial : MonoBehaviour {
 
         actionsCompleted++;
         if (actionsCompleted == 5)
+        {
             Game_Manager.g_GameManager.isTutorialFinished = true;
+            done = true;
+        }
     }
 
 }

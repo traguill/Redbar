@@ -32,6 +32,8 @@ public class Enemymanager : MonoBehaviour
     public Vector3 spawnLocationRight;
     public Vector3 spawnLocationLeft;
 
+    public bool win = false;
+
     enum Enemies
     {
         DRUNK,
@@ -84,7 +86,7 @@ public class Enemymanager : MonoBehaviour
         numTotalEvents++;
         if (numTotalEvents == numToEndEvents)
         {
-            //TODO: WIN!!!
+            win = true;
         }
         else
             SpawnEvent();

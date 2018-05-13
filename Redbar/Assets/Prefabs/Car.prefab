@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reacts: 0
   type: 2
-  speed: 1.3
+  speed: 2
   loseDistance: 0.7
   mobileProb: 0
 --- !u!212 &212990007339098312
