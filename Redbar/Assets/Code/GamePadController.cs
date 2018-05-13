@@ -11,7 +11,7 @@ public class GamePadController : MonoBehaviour {
     float timer = 1.0f;
     bool gamepadFound = false;
     PlayerIndex playerIndex;
-    float intensity = 0.5F;
+    float intensity = 0.5f;
 
     private void Awake()
     {
@@ -36,21 +36,27 @@ public class GamePadController : MonoBehaviour {
 
     public void SetTimer(float time)
     {
-        initialTimer = timer = time;
+        initialTimer = time;
+        timer = time;
     }
 
     public IEnumerator Vibrate()
     {
-        
-        while (timer >= 0)
+        if(timer == initialTimer || timer  <= 0)
         {
-            GamePad.SetVibration(playerIndex, intensity * timer, intensity * timer);
-            timer -= Time.deltaTime;
-            yield return null;
-        }
+            while (timer >= 0)
+            {
+                float power = intensity * timer;
+                Mathf.Clamp(power, 0, 1);
+                GamePad.SetVibration(playerIndex, power, power);
+                timer -= Time.deltaTime;
+                yield return null;
+            }
 
-        yield return null;
-        timer = initialTimer;
+            yield return null;
+            timer = initialTimer;
+        }
+        
     }
 
 }
