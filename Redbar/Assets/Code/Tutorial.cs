@@ -43,23 +43,23 @@ public class Tutorial : MonoBehaviour {
         {
             case 0: // Car no interact
                 event_carNoInteract = true;
-                Enemymanager.g_EnemyManager.SpawnCar(false);
+                EnemyManager.g_EnemyManager.SpawnCar(false);
                 break;
             case 1: // Car interact
                 event_carInteract = true;
-                Enemymanager.g_EnemyManager.SpawnCar(true);
+                EnemyManager.g_EnemyManager.SpawnCar(true);
                 break;
             case 2: // people no interact 1
                 event_peopleNoInteract1 = true;
-                Enemymanager.g_EnemyManager.SpawnDrunk(false);
+                EnemyManager.g_EnemyManager.SpawnDrunk(false);
                 break;
             case 3: // peopole no interact 2
                 event_peopleNoInteract2 = true;
-                Enemymanager.g_EnemyManager.SpawnSilhouette(false);
+                EnemyManager.g_EnemyManager.SpawnSilhouette(false);
                 break;
             case 4: // people interact
                 event_peopleInteract = true;
-                Enemymanager.g_EnemyManager.SpawnGroup(true);
+                EnemyManager.g_EnemyManager.SpawnGroup(true);
                 break;
         }
 

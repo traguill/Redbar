@@ -45,7 +45,7 @@ public class Background : MonoBehaviour {
             {
                 currentDec = portal;
                 currentDec.SetActive(true);
-                if(Enemymanager.g_EnemyManager.win)
+                if(EnemyManager.g_EnemyManager.win)
                 {
                     currentDec.GetComponent<Portal>().SetHome();
                     portal.gameObject.GetComponent<SpriteRenderer>().sprite = winPortal;

@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour {
                     else
                     {
                         playerSafed = true;
-                        Enemymanager.g_EnemyManager.NotifyEventEnd();
+                        EnemyManager.g_EnemyManager.NotifyEventEnd();
                     }
                    
                 }
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour {
                     if(Game_Manager.g_GameManager.player.GetComponent<Player>().running && runnChance < 80)
                     {
                         playerSafed = true;
-                        Enemymanager.g_EnemyManager.NotifyEventEnd();
+                        EnemyManager.g_EnemyManager.NotifyEventEnd();
                     }
                     else
                     {
@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour {
             else
             {
                 playerSafed = true;
-                Enemymanager.g_EnemyManager.NotifyEventEnd();
+                EnemyManager.g_EnemyManager.NotifyEventEnd();
             }
         }
 

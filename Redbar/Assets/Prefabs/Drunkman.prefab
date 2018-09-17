@@ -117,7 +117,7 @@ MonoBehaviour:
   type: 0
   speed: 0.5
   loseDistance: 1
-  mobileProb: 0
+  mobileProb: 80
 --- !u!114 &114238954725012278
 MonoBehaviour:
   m_ObjectHideFlags: 1

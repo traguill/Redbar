@@ -129,7 +129,7 @@ MonoBehaviour:
   type: 3
   speed: 0
   loseDistance: 1
-  mobileProb: 0
+  mobileProb: 80
 --- !u!198 &198855872037959120
 ParticleSystem:
   m_ObjectHideFlags: 1

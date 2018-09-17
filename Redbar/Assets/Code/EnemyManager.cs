@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemymanager : MonoBehaviour 
+public class EnemyManager : MonoBehaviour 
 {
     [Header("Probability to spawn")]
     public int drunkSpawnPer = 25;
@@ -43,7 +43,7 @@ public class Enemymanager : MonoBehaviour
     }
 
     [HideInInspector]
-    public static Enemymanager g_EnemyManager;
+    public static EnemyManager g_EnemyManager;
 
     Enemies[] enemyRandomizer;
     

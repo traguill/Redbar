@@ -114,7 +114,7 @@ MonoBehaviour:
   type: 2
   speed: 2
   loseDistance: 0.7
-  mobileProb: 0
+  mobileProb: 80
 --- !u!212 &212990007339098312
 SpriteRenderer:
   m_ObjectHideFlags: 1

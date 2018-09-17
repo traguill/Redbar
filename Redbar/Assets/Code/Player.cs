@@ -60,7 +60,7 @@ public class Player : MonoBehaviour {
                     running = false;
         #endif
         
-        if(Input.GetButton("AButton") && canPortal)
+        if((Input.GetButton("AButton") || Input.GetKeyDown(KeyCode.W)) && canPortal)
         {
             PortalAction();
             if (!sound_gate)
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (Input.GetButton("BButton"))
+        if (Input.GetButton("BButton") || Input.GetKeyDown(KeyCode.Q))
         {
             MobileAction();
             if (!sound_mobile)
@@ -80,7 +80,8 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1 && currentBoost >= 0.0f)
+        if (((Input.GetAxis("LeftJoystickVertical") < -0.1f && Input.GetAxis("LT") > 0.1f && Input.GetAxis("LT") < 1) ||
+            (Input.GetKey(KeyCode.LeftShift))) && currentBoost >= 0.0f)
         {
             currentBoost -= Time.deltaTime;
             running = true;
@@ -92,7 +93,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        else if(Input.GetAxis("LeftJoystickVertical") < -0.1f)
+        else if((Input.GetAxis("LeftJoystickVertical") < -0.1f)  || Input.GetKey(KeyCode.UpArrow))
         {
             running = false;
             stop = false;
